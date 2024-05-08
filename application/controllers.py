@@ -11,14 +11,8 @@ bcrypt=Bcrypt(app)
 
 @app.route("/",methods=["GET","POST"])
 def index():
-    venue=Venue.query.all()
-    if "username" in session and session["user_role"]=='admin':
-         return (render_template("admin.html",user=session["username"],role=session["user_role"]))
-    elif  "username" in session:
-
-        return render_template("index.html", user = session["username"], signed=True,role=session["user_role"],venue=venue)
-    else:
-        return render_template("index.html", user = "", signed=False,venue=venue)
+    products = Product.query.all()  # Fetch all products and their associated images
+    return render_template('index.html', products=products)
 
 
 
@@ -70,8 +64,9 @@ def register():
                role = Role.query.filter_by(id=request.form['options']).first()
                
                user=User(username=username,email=email,password=password_hash)
+               #user.products=[]
                user.roles.append(role)
-               user.tickets=[]
+               
                db.session.add(user)
                db.session.commit()
                session["username"]=username  #maintaining cookie
