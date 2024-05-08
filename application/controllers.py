@@ -145,3 +145,16 @@ def buy(product_id):
     return render_template("buy_product.html", product=product)
 
 
+@app.route('/orders')
+def order_history():
+    if 'user_email' not in session:
+        flash("You need to log in to view order history.", "warning")
+        return redirect(url_for('login'))
+
+    user = User.query.filter_by(email=session['user_email']).first()
+    if not user:
+        flash("User not found.", "error")
+        return redirect(url_for('index'))
+
+    products = user.products  # Assuming this retrieves the list of ordered products
+    return render_template('order_history.html', products=products)
