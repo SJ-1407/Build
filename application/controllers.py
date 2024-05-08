@@ -132,10 +132,14 @@ def buy(product_id):
             return redirect(url_for('index'))  # Redirect to home page
 
         # Adding product to the user's list of products using the established relationship
-        
-        user.products.append(product)  # Add the product to the user's collection of bought products
+       
+        flash('Purchase confirmed for ' + product.name, 'success') 
+        user.products.append(product)
+        # Add the product to the user's collection of bought products
         db.session.commit()  # Commit the transaction to the database
-           
+          
+        
+
         return redirect(url_for('index'))  # Redirect to the home page or confirmation page
 
     return render_template("buy_product.html", product=product)
