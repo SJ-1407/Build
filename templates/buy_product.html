@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <!-- Display flash messages -->
+        
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for category, message in messages %}
@@ -19,7 +19,7 @@
         {% endif %}
         {% endwith %}
 
-        <!-- Product Details Card -->
+       
         <div class="card">
             <div class="card-header">
                 <h2>Purchase Product</h2>
@@ -42,3 +42,170 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+-->
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Product - {{ product.name }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f9; /* Light grey background */
+            color: #333; /* Dark grey text */
+        }
+        .navbar-custom {
+            background-color: #004085; /* Dark blue background */
+            color: #ffffff; /* White text */
+        }
+        .btn-success {
+            background-color: #28a745; /* Green for success buttons */
+            border-color: #28a745; /* Match border to background */
+        }
+        .btn-success:hover {
+            background-color: #218838; /* Darker green on hover */
+            border-color: #1e7e34;
+        }
+        .card {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add shadow for depth */
+            transition: transform 0.2s; /* Smooth transform on hover */
+        }
+        .card:hover {
+            transform: scale(1.03); /* Slightly scale up cards on hover */
+        }
+        .img-fluid {
+            border-radius: 0.25rem; /* Rounded corners for images */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">Product Showcase</a>
+        </div>
+    </nav>
+    <div class="container mt-5">
+     
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+       
+        <div class="card">
+            <div class="card-header">
+                <h2>Purchase Product</h2>
+            </div>
+            <div class="card-body">
+                {% if product.images %}
+                <img src="{{ product.images[0].url if product.images else 'default.jpg' }}" class="img-fluid rounded mb-3" alt="{{ product.name }}">
+                {% else %}
+                <img src="default.jpg" class="img-fluid rounded mb-3" alt="{{ product.name }}">
+                {% endif %}
+                <h3 class="card-title">{{ product.name }}</h3>
+                <p class="card-text">{{ product.description }}</p>
+                <p class="card-text"><strong>Price:</strong> ${{ product.price }}</p>
+                <form action="{{ url_for('buy', product_id=product.product_id) }}" method="post">
+                    <button type="submit" class="btn btn-success">Confirm Purchase</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Product - {{ product.name }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f9; /* Light grey background */
+            color: #333; /* Dark grey text */
+        }
+        .navbar-custom {
+            background-color: #004085; /* Dark blue background */
+            color: #ffffff; /* White text */
+        }
+        .btn-success {
+            background-color: #28a745; /* Green for success buttons */
+            border-color: #28a745; /* Match border to background */
+        }
+        .btn-success:hover {
+            background-color: #218838; /* Darker green on hover */
+            border-color: #1e7e34;
+        }
+        .card {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add shadow for depth */
+            transition: transform 0.2s; /* Smooth transform on hover */
+        }
+        .card:hover {
+            transform: scale(1.03); /* Slightly scale up cards on hover */
+        }
+        .img-fluid {
+            border-radius: 0.25rem; /* Rounded corners for images */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">Product Showcase</a>
+        </div>
+    </nav>
+    <div class="container mt-5">
+       
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+
+        <div class="card">
+            <div class="card-header">
+                <h2>Purchase Product</h2>
+            </div>
+            <div class="card-body">
+                {% if product.images %}
+                <img src="{{ product.images[0].url if product.images else 'default.jpg' }}" class="img-fluid rounded mb-3" alt="{{ product.name }}">
+                {% else %}
+                <img src="default.jpg" class="img-fluid rounded mb-3" alt="{{ product.name }}">
+                {% endif %}
+                <h3 class="card-title">{{ product.name }}</h3>
+                <p class="card-text">{{ product.description }}</p>
+                <p class="card-text"><strong>Price:</strong> ${{ product.price }}</p>
+                <form action="{{ url_for('buy', product_id=product.product_id) }}" method="post" onsubmit="return confirmPurchase()">
+                    <button type="submit" class="btn btn-success">Confirm Purchase</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function confirmPurchase() {
+            return confirm('Are you sure you want to purchase this product?');
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
