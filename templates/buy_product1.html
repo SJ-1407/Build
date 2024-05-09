@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/buy_product1.css">
+        <script>
+$(document).ready(function() {
+ 
+ $('.color-choose input').on('click', function() {
+     var headphonesColor = $(this).attr('data-image');
+
+     $('.active').removeClass('active');
+     $('.left-column img[data-image = ' + headphonesColor + ']').addClass('active');
+     $(this).addClass('active');
+ });
+
+});
+          </script>
+    </head>
+    <body>
+        <main class="container">
+ 
+            <!-- Left Column / Headphones Image -->
+            <div class="left-column">
+
+                <img  data-image="black" src="{{ product.images[0].url if product.images else 'default.jpg' }}" class="img-fluid rounded mb-3" alt="{{ product.name }}">
+
+              <!-- <img data-image="black" src="images/black.png" alt="">
+              <img data-image="blue" src="images/blue.png" alt="">
+              <img data-image="red" class="active" src="images/red.png" alt=""> -->
+            </div>
+           
+           
+            <!-- Right Column -->
+            <div class="right-column">
+           
+              <!-- Product Description -->
+              <div class="product-description">
+                <span>{{ product.name }}</span>
+                <h1>{{ product.name }}</h1>
+                <p>{{ product.description }}</p>
+              </div>
+           
+              <!-- Product Configuration -->
+              <div class="product-configuration">
+           
+                <!-- Product Color -->
+                <div class="product-color">
+                  <span>Color</span>
+           
+                  <div class="color-choose">
+                    <div>
+                      <input data-image="red" type="radio" id="red" name="color" value="red" checked>
+                      <label for="red"><span></span></label>
+                    </div>
+                    <div>
+                      <input data-image="blue" type="radio" id="blue" name="color" value="blue">
+                      <label for="blue"><span></span></label>
+                    </div>
+                    <div>
+                      <input data-image="black" type="radio" id="black" name="color" value="black">
+                      <label for="black"><span></span></label>
+                    </div>
+                  </div>
+           
+                </div>
+           
+                <!-- Cable Configuration -->
+                <!-- <div class="cable-config">
+                  <span>Cable configuration</span>
+           
+                  <div class="cable-choose">
+                    <button>Straight</button>
+                    <button>Coiled</button>
+                    <button>Long-coiled</button>
+                  </div>
+           
+                  <a href="#">How to configurate your headphones</a>
+                </div>
+              </div> -->
+           
+              <!-- Product Pricing -->
+              <div class="product-price">
+                <span>{{ product.description }}</span>
+                <form action="{{ url_for('buy', product_id=product.product_id) }}" method="post" onsubmit="return confirmPurchase()">
+                    <button type="submit" class="btn btn-success">Confirm Purchase</button>
+                </form>
+              </div>
+            </div>
+          </main>
+    </body>
+</html>

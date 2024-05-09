@@ -1,0 +1,73 @@
+body {
+    background-image:url("../static/images/dp2.jpeg"); /* Light grey background for a subtle look */
+    color: #333; /* Dark grey text for readability */
+    
+    
+}
+.navbar-custom {
+    background-color: #004085; /* Dark blue background for the navbar */
+}
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #ffffff; /* White text color for contrast */
+}
+.product-card {
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add shadow for depth */
+    transition: transform 0.2s; /* Smooth transform on hover */
+    opacity: 0.9;
+    border-radius: 20px;
+    background-color: aliceblue;
+}
+.product-card:hover {
+    transform: scale(1.03); /* Slightly scale up cards on hover */
+}
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.btn-primary {
+    background-color: #007bff; /* Bright blue for primary buttons */
+    border-color: #007bff; /* Match border to background */
+}
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-color: #004085;
+}
+.carousel-item {
+    height: 200px;
+}
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    background-color: #004085; /* Dark blue footer matching the navbar */
+    color: white; /* White text for the footer */
+}
+.nav-item{
+    display:flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.text-center{
+    color:white;
+}
+nav{
+    display:flex;
+    justify-content: space-between;
+    flex-direction: row;
+    height: 12vh;
+    font-size: 24px;
+    align-items: center;
+
+}
+
+nav .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.navbar-brand{
+    font-size: 28px;
+}
